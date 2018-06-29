@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  database:
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE:             sulu
+    image: mysql:5.7.22
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    environment:
+      COMPOSER_HOME: /tmp/composer
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - 8000:8000
+    user: ${ID:-www-data}
+    volumes:
+      - /etc/group:/etc/group:ro
+      - /etc/passwd:/etc/passwd:ro
+      - ..:/var/www/html:cached
+    working_dir: /var/www/html
+    entrypoint: tail -f /dev/null
+    command: ["bin/adminconsole", "server:run", "0.0.0.0:8000"]
+
+  node:
+    image: node:9.3.0-alpine
+    user: ${ID:-www-data}
+    volumes:
+        - ..:/var/www/html:cached
+    working_dir: /var/www/html
+    entrypoint: tail -f /dev/null
+
+volumes:
+  data:

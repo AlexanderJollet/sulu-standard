@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>contact</key>
+    <view>templates/contact</view>
+    <controller>AppBundle\Controller\DefaultController:index</controller>
+    <cacheLifetime>2400</cacheLifetime>
+
+    <meta>
+        <title lang="en">Contact</title>
+        <title lang="de"> Kontakt</title>
+    </meta>
+
+    <properties>
+        <section name="highlight">
+            <properties>
+
+                <property name="title" type="text_line" mandatory="true">
+                    <meta>
+                        <title lang="en">Title of the page</title>
+                        <title lang="de">Seitentitel</title>
+                    </meta>
+                    <tag name="sulu.rlp.part"/>
+                </property>
+
+
+                <property name="facebook" type="url" mandatory="true">
+                    <meta>
+                        <title lang="en">Lien Facebook</title>
+                        <title lang="de">Verknüpfung Facebook</title>
+                    </meta>
+
+                </property>
+
+                <property name="twitter" type="url" mandatory="true">
+                    <meta>
+                        <title lang="en">Lien Twitter</title>
+                        <title lang="de">Verknüpfung Twitter</title>
+                    </meta>
+
+                </property>
+
+                <property name="insta" type="url" mandatory="true">
+                    <meta>
+                        <title lang="en">Lien Instagram</title>
+                        <title lang="de">Verknüpfung Instagram</title>
+                    </meta>
+
+                </property>
+
+
+                <property name="url" type="resource_locator" mandatory="true">
+                    <meta>
+                        <title lang="en">Resourcelocator</title>
+                        <title lang="de">Adresse</title>
+                    </meta>
+
+                    <tag name="sulu.rlp"/>
+                </property>
+                
+                <property name="image" type="media_selection" mandatory="true">
+                    <meta>
+                        <title lang="en">Picture</title>
+                        <title lang="de">Bild</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</template>

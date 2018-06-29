@@ -1,0 +1,60 @@
+{% block meta %}
+    {% include "SuluWebsiteBundle:Extension:seo.html.twig" with {
+        "seo": extension.seo|default([]),
+        "content": content|default([]),
+        "urls": urls|default([]),
+        "shadowBaseLocale": shadowBaseLocale|default(),
+        "defaultLocale": request.defaultLocale|default('de')
+    } %}
+{% endblock %}
+
+
+ {% extends "master.html.twig" %}
+
+{% block content %}
+    <div class="contact">
+        <div property="title" class="title">
+            <span>{{ content['title'] }}</span>
+        </div>
+        <div class="main">
+            <div class="subtitle">{{ "we'd love to help"|capitalize}}</div>
+            <div class="form-wrapper">
+                <div class="form">
+                    {{ form_start(form) }}
+                    {{ form_row(form.prenom) }}
+                    {{ form_row(form.nom) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.message) }}
+
+                    <div class="form-controls">
+                        {{ form_row(form.envoyer) }}
+                        {{ form_row(form.annuler) }}
+                        <div class="clear"></div>
+                    </div>
+
+                    {{ form_end(form) }}
+                    {{ message }}
+                </div>
+                <div class="links">
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i>Rue de la Grande Rue 75001 Paris France</li>
+                        <li><i class="fas fa-phone-square"></i>01 12 34 56 78</li>
+                        <li><i class="fas fa-envelope-square"></i>mon_super_site@test.local</li>
+                    </ul>
+                    <div class="social">
+                        <a href="{{ content['insta'] }}" target="_blank">
+                            <i class="fab fa-instagram fa-3x"></i>
+                        </a>
+                        <a href="{{ content['facebook'] }}" target="_blank">
+                            <i class="fab fa-facebook fa-3x"></i>
+                        </a>
+                        <a href="{{ content['twitter'] }}" target="_blank">
+                            <i class="fab fa-twitter fa-3x"></i>
+                        </a>
+                    </div>
+             </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

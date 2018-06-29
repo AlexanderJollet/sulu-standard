@@ -1,0 +1,14 @@
+<div id="list-toolbar-container" class="list-toolbar-container"></div>
+
+<% if (data === undefined) { %>
+
+La donnée n'existe pas.
+
+<% } else { %>
+
+<div class="message-nom"><%= data.nom %></div>
+<div class="message-prenom"><%= data.prenom %></div>
+<div class="message-email"><%= data.email %></div>
+<div class="message-message"><%= data.message %></div>
+
+<% } %>

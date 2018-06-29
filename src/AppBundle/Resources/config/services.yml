@@ -1,0 +1,9 @@
+services:
+    AppBundle\Manager\ContactMessageManager:
+      arguments:
+          $entityManager: '@doctrine.orm.entity_manager'
+
+    AppBundle\Admin\ContactMessageAdmin:
+      arguments:
+          $title: '%sulu_admin.name%'
+      tags: ['sulu.admin']
